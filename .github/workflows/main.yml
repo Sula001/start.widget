@@ -1,0 +1,250 @@
+<html>
+
+<head>
+      <meta charset="utf-8">
+
+<title>Помощь</title>
+<script src="https://widget.tiptoppay.kz/bundles/widget.js"></script>
+
+</head>
+<body>
+
+<form name="form" class="decor" method="post">
+<div class="form-left-decoration"></div>
+<div class="form-right-decoration"></div>
+<div class="circle"></div>
+
+
+<div class="form-inner">
+<h3>Благотворительный фонд</h3>
+<input id="myname"  type="text" placeholder="Имя">
+<input id="lastName"  type="text" placeholder="Фамилия">
+<input id="email"  type="email" placeholder="Email - обязательно" required>
+<input id="price"  type="number" placeholder="Сумма - обязательно" required>
+<textarea  id="coment"  placeholder="Ваш комментарий по желанию" rows="3"></textarea>
+<input id="recurrent" type="button" value="Поддерживать ежемесячно? - Нет"/>
+
+<input id="elem" type="button" value="Помочь"/>
+
+</div>
+
+</form>
+
+    <script> 
+     recurrent.onclick = () => swit();
+     
+this.swit = function () {
+ var statusYES = 'Поддерживать ежемесячно? - Да';
+ var statusNO = 'Поддерживать ежемесячно? - Нет';
+ if (document.getElementById("recurrent").value == statusNO) {document.getElementById("recurrent").value = statusYES;} 
+ else {document.getElementById("recurrent").value = statusNO;}
+ };
+ 
+ 
+ elem.onclick = () => pay();
+
+this.pay = function () {
+var widget = new tiptop.Widget({yandexPaySupport: false});
+
+var receipt = {
+        Items: [//товарные позиции
+             {
+                label: 'Наименование товара 3', //наименование товара
+                price: 450.00, //цена
+                quantity: 1.00, //количество
+                amount: 450.00, //сумма
+                vat: 12, //ставка НДС
+            }
+        ],
+        taxationSystem: 0, //система налогообложения; необязательный, если у вас одна система налогообложения
+        email: 'user@example.com', //e-mail покупателя, если нужно отправить письмо с чеком
+        phone: '', //телефон покупателя в любом формате, если нужно отправить сообщение со ссылкой на чек
+        amounts:
+        {
+            electronic: 450.00, // Сумма оплаты электронными деньгами
+        }
+    }
+var myname = document.getElementById("myname").value;
+var lastName = document.getElementById("lastName").value;
+var email = document.getElementById("email").value;
+var price = document.getElementById("price").value;
+var coment = document.getElementById("coment").value;
+var recurrent = document.getElementById("recurrent").value;
+if (email == '') {email ='my@mail.ru'} // в случае если не указали почту, но захотели поддерживать ежемесячно, указываем левый email 
+
+var data ={PaymentData: {CustomerReceipt: receipt}};
+
+if (recurrent == 'Поддерживать ежемесячно? - Да') {data.PaymentData ={recurrent:{interval:'Month',period:1}
+ } }
+
+                    
+ 
+ 
+ 
+ var widget = new tiptop.Widget({language: "kk"});
+
+const intentParams = {
+    publicTerminalId: "pk_817b520f768b27ddd343920b55503", // Public terminal ID
+    paymentSchema: "Single", // Single-stage payment
+    currency: "KZT", // Payment currency
+    amount: 8000, // Payment amount
+    //autoClose: 3,
+    userInfo: {
+          accountId: "user_12345", // ID account
+          email: "user@example.com", // Email
+          phone: "+77075550000", // phone
+          address: "д. 7, кв. 44", // adress
+          postCode: "119518", // post adress
+          
+  },
+successRedirectUrl: "https://wordhtml.com",
+failRedirectUrl: "https://webhook.site",
+    paymentOptions: [
+        {
+            type: "InstallmentKz", // Installment payment type
+            items: [
+                {
+                    name: "Basket", // Product name
+                    brand: "Dior", // Brand
+                    category: "Common", // Category
+                    count: 1, // Quantity
+                    price: 100, // Price per unit
+                    sku: "SomeSKU" // Unique product identifier
+                },
+                {
+                    name: "Oranges",
+                    brand: "Fanta",
+                    category: "Fruits",
+                    count: 9,
+                    price: 100,
+                    sku: "SomeSKU6"
+                }
+            ]
+        }
+    ]
+};
+
+
+
+widget.start(intentParams)
+    .then(function(widgetResult) {
+        console.log('result', widgetResult);
+    })
+    .catch(function(error) {
+        console.log('error', error);
+    });
+
+};
+
+</script>
+
+
+<style>
+* {
+   box-sizing: border-box;
+}
+body {
+   background: #f69a73;
+}
+.decor {
+   position: relative;
+   max-width: 400px;
+   margin: 50px auto 0;
+   background: white;
+   border-radius: 30px;
+}
+.form-left-decoration, .form-right-decoration {
+   content: "";
+   position: absolute;
+   width: 50px;
+   height: 20px;
+   background: #f69a73;
+   border-radius: 20px;
+}
+.form-left-decoration {
+   bottom: 60px;
+   left: -30px;
+}
+
+.container {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  user-select: none;
+}
+
+
+.form-right-decoration {
+   top: 60px;
+   right: -30px;
+}
+.form-left-decoration:before, .form-left-decoration:after, .form-right-decoration:before, .form-right-decoration:after {
+   content: "";
+   position: absolute;
+   width: 50px;
+   height: 20px;
+   border-radius: 30px;
+   background: white;
+}
+.form-left-decoration:before {
+   top: -20px;
+}
+.form-left-decoration:after {
+   top: 20px;
+   left: 10px;
+}
+.form-right-decoration:before {
+   top: -20px;
+   right: 0;
+}
+.form-right-decoration:after {
+   top: 20px;
+   right: 10px;
+}
+.circle {
+   position: absolute;
+   bottom: 80px;
+   left: -55px;
+   width: 20px;
+   height: 20px;
+   border-radius: 50%;
+   background: white;
+}
+.form-inner {
+   padding: 50px;
+}
+.form-inner input, .form-inner textarea {
+   display: block;
+   width: 100%;
+   padding: 0 20px;
+   margin-bottom: 10px;
+   background: #E9EFF6;
+   line-height: 40px;
+   border-width: 0;
+   border-radius: 20px;
+   font-family: 'Roboto', sans-serif;
+}
+.form-inner input[type="submit"] {
+   margin-top: 30px;
+   background: #f69a73;
+   border-bottom: 4px solid #d87d56;
+   color: white;
+   font-size: 14px;
+}
+.form-inner textarea {
+   resize: none;
+}
+.form-inner h3 {
+   margin-top: 0;
+   font-family: 'Roboto', sans-serif;
+   font-weight: 500;
+   font-size: 24px;
+   color: #707981;
+}
+</style>
+</body>
+<footer></footer>
+</html>
