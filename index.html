@@ -50,9 +50,9 @@ var receipt = {
         Items: [//товарные позиции
              {
                 label: 'Наименование товара 3', //наименование товара
-                price: 450.00, //цена
+                price: 50.00, //цена
                 quantity: 1.00, //количество
-                amount: 450.00, //сумма
+                amount: 50.00, //сумма
                 vat: 12, //ставка НДС
             }
         ],
@@ -84,10 +84,10 @@ if (recurrent == 'Поддерживать ежемесячно? - Да') {data.
  var widget = new tiptop.Widget({language: "kk"});
 
 const intentParams = {
-    publicTerminalId: "pk_817b520f768b27ddd343920b55503", // Public terminal ID
+    publicTerminalId: "pk_ea72b952cfc23228e6a87163856ce", // Public terminal ID pk_817b520f768b27ddd343920b55503
     paymentSchema: "Dual", // Single-stage payment
     currency: "KZT", // Payment currency
-    amount: 8000, // Payment amount
+    amount: 50, // Payment amount
     //autoClose: 3,
     userInfo: {
           accountId: "user_12345", // ID account
@@ -108,7 +108,7 @@ failRedirectUrl: "https://webhook.site",
                     brand: "Dior", // Brand
                     category: "Common", // Category
                     count: 1, // Quantity
-                    price: 100, // Price per unit
+                    price: 25, // Price per unit
                     sku: "SomeSKU" // Unique product identifier
                 },
                 {
@@ -116,7 +116,7 @@ failRedirectUrl: "https://webhook.site",
                     brand: "Fanta",
                     category: "Fruits",
                     count: 9,
-                    price: 100,
+                    price: 25,
                     sku: "SomeSKU6"
                 }
             ]
@@ -249,4 +249,5 @@ body {
 <footer></footer>
 
 </html>
+
 
